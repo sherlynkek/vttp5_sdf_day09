@@ -29,7 +29,7 @@ public class Task10 {
             String ans = "";
             String correct = "0";
 
-            if (numList.get(currentPos - 1) < numList.get(currentPos) ) {
+            if (numList.get(currentPos - 1) < numList.get(currentPos)) {
                 ans = "h";
             }
             else {
@@ -53,6 +53,6 @@ public class Task10 {
                 }
             }
         }
-
+ 
     }
 }
