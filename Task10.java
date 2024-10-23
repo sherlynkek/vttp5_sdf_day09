@@ -14,11 +14,12 @@ public class Task10 {
             numList.add(random.nextInt(1, 100));
         }
 
+        // 
         Scanner scanner = new Scanner(System.in);
         String userInput;
 
         List<String> guessList = new ArrayList<>();
-        
+        System.out.println("First number: " + numList);
 
 
     }
