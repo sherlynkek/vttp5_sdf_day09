@@ -18,7 +18,7 @@ public class Task9 {
         int minBound = 0;
         int maxBound = 999999;
 
-        while (!userInput.toLowerCase().equals("quit")) {
+         while (!userInput.toLowerCase().equals("quit")) {
 
             System.out.println("\nYour guess: ");
             userInput = scanner.nextLine();
