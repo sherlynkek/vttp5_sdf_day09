@@ -1,58 +1,70 @@
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Task10 {
     public static void main(String[] args) {
         
         // Random generated 10 different numbers 
         Random random = new Random();
-        List<Integer> numList = new ArrayList<>();
-        
+        List<Integer> numberList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            numList.add(random.nextInt(1, 100));
+            numberList.add(random.nextInt(1, 100));
         }
 
-        // 
-        Scanner scanner = new Scanner(System.in);
-        String userInput;
-
+        Console console = System.console();
+        Boolean userInput = true;
+        String guess = "";
         int currentPos = 1;
-        List<String> guessList = new ArrayList<>();
-        System.out.println("First number: " + numList.get(0));
+        List<String> correctList = new ArrayList<>();
 
-        while(true) {
-            System.out.println("Guess the next number if it is higher(h) or lower(l) than the previous number: ");
-            userInput = scanner.nextLine();
-            
-            String ans = "";
+        System.out.printf("\r\nFirst Number: %d\r\n", numberList.get(0));
+        correctList.add("-");
+        while (userInput) {
+            guess = console.readLine("\r\nGuess the next number is higher 'H' or lower 'L':");
+
+            int higher = 0;
+            int lower = 0;
+            for(int x = currentPos; x < (numberList.size() - 1); x++) {
+                if (numberList.get(x) < numberList.get(x - 1)) {
+                    lower++;
+                } else {
+                    higher++;
+                }
+            }
+
+            String answer = "";
             String correct = "0";
+            if (numberList.get(currentPos - 1) < numberList.get(currentPos)) 
+                answer = "h";
+            else 
+                answer = "l";
 
-            if (numList.get(currentPos - 1) < numList.get(currentPos)) {
-                ans = "h";
-            }
-            else {
-                ans = "l";
-            }
-
-            if (userInput.trim().toLowerCase().equals(ans)) {
+            if (guess.trim().toLowerCase().equals(answer))
                 correct = "1";
-            }
-            else {
+            else 
                 correct = "0";
-                guessList.add(correct);
-            }
+            correctList.add(correct);
 
+            // print out the results
             for(int a = 0; a <= currentPos; a++) {
-                if (a == 0) {
-                    System.out.printf("%d", numList.get(a));
+                if (a == 0){ 
+                    System.out.printf("\r\n%d", numberList.get(a));
                 }
                 else {
-                    System.out.printf("%d : %s", numList.get(a), guessList.get(a));
+                    System.out.printf("    %d:%s", numberList.get(a), correctList.get(a));
                 }
             }
+            System.out.printf("    h:%d    l:%d", higher, lower);
+
+            // program terminates/ends
+            if (currentPos == 9) {
+                userInput = false;
+            }
+
+            currentPos++;
         }
- 
+        System.out.println("\r\n");
     }
 }

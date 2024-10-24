@@ -1,32 +1,19 @@
 package Task11;
 
 public class Card {
-    private Suit suit;
-    private CardValue value;
-    
-    public Card(Suit suit, CardValue value) {
+    private final Suits suit;
+    private final Rank rank;
+
+    public Card(Suits suit, Rank rank) {
         this.suit = suit;
-        this.value = value;
+        this.rank = rank;
     }
 
-    public Suit getSuit() {
+    public Suits getSuit() {
         return suit;
     }
 
-    public void setSuit(Suit suit) {
-        this.suit = suit;
-    }
-
-    public CardValue getValue() {
-        return value;
-    }
-
-    public void setValue(CardValue value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "Card [suit=" + suit + ", value=" + value + "]";
+    public Rank getRank() {
+        return rank;
     }
 }
